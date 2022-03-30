@@ -19,6 +19,7 @@ class _EditImageScreenState extends EditImageViewModel {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: _appBar,
       body: SafeArea(
         child: SizedBox(
           height: size.height * 0.6,
@@ -40,7 +41,7 @@ class _EditImageScreenState extends EditImageViewModel {
                             context.findRenderObject() as RenderBox;
                         Offset off = renderBox.globalToLocal(drag.offset);
                         setState(() {
-                          texts[i].top = off.dy - 65;
+                          texts[i].top = off.dy - 120;
                           texts[i].left = off.dx;
                         });
                       },
@@ -84,6 +85,171 @@ class _EditImageScreenState extends EditImageViewModel {
         child: const Icon(
           Icons.edit,
           color: Colors.black,
+        ),
+      );
+
+  AppBar get _appBar => AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        title: SizedBox(
+          height: 50,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              IconButton(
+                onPressed: () => debugPrint('Save Button'),
+                icon: const Icon(
+                  Icons.save,
+                  color: Colors.black,
+                ),
+                tooltip: 'Save Image',
+              ),
+              IconButton(
+                onPressed: () => debugPrint('Increase font size'),
+                icon: const Icon(
+                  Icons.add,
+                  color: Colors.black,
+                ),
+                tooltip: 'Increase font size',
+              ),
+              IconButton(
+                onPressed: () => debugPrint('Decrease font size'),
+                icon: const Icon(
+                  Icons.remove,
+                  color: Colors.black,
+                ),
+                tooltip: 'Decrease font size',
+              ),
+              IconButton(
+                onPressed: () => debugPrint('Align left'),
+                icon: const Icon(
+                  Icons.format_align_left,
+                  color: Colors.black,
+                ),
+                tooltip: 'Align left',
+              ),
+              IconButton(
+                onPressed: () => debugPrint('Align Center'),
+                icon: const Icon(
+                  Icons.format_align_center,
+                  color: Colors.black,
+                ),
+                tooltip: 'Align Center',
+              ),
+              IconButton(
+                onPressed: () => debugPrint('Align Right'),
+                icon: const Icon(
+                  Icons.format_align_right,
+                  color: Colors.black,
+                ),
+                tooltip: 'Align Right',
+              ),
+              IconButton(
+                onPressed: () => debugPrint('Bold'),
+                icon: const Icon(
+                  Icons.format_bold,
+                  color: Colors.black,
+                ),
+                tooltip: 'Bold',
+              ),
+              IconButton(
+                onPressed: () => debugPrint('Italic'),
+                icon: const Icon(
+                  Icons.format_italic,
+                  color: Colors.black,
+                ),
+                tooltip: 'Italic',
+              ),
+              IconButton(
+                onPressed: () => debugPrint('Add New Line'),
+                icon: const Icon(
+                  Icons.space_bar,
+                  color: Colors.black,
+                ),
+                tooltip: 'Add New Line',
+              ),
+              Tooltip(
+                message: 'Red',
+                child: GestureDetector(
+                  onTap: () {},
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.red,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 5),
+              Tooltip(
+                message: 'White',
+                child: GestureDetector(
+                  onTap: () {},
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.white,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 5),
+              Tooltip(
+                message: 'Black',
+                child: GestureDetector(
+                  onTap: () {},
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.black,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 5),
+              Tooltip(
+                message: 'Blue',
+                child: GestureDetector(
+                  onTap: () {},
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.blue,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 5),
+              Tooltip(
+                message: 'Yellow',
+                child: GestureDetector(
+                  onTap: () {},
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.yellow,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 5),
+              Tooltip(
+                message: 'Green',
+                child: GestureDetector(
+                  onTap: () {},
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.green,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 5),
+              Tooltip(
+                message: 'Orange',
+                child: GestureDetector(
+                  onTap: () {},
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.orange,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 5),
+              Tooltip(
+                message: 'Pink',
+                child: GestureDetector(
+                  onTap: () {},
+                  child: const CircleAvatar(
+                    backgroundColor: Colors.pink,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 5),
+            ],
+          ),
         ),
       );
 }
