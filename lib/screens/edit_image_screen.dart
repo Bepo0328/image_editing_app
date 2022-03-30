@@ -113,7 +113,7 @@ class _EditImageScreenState extends EditImageViewModel {
                 tooltip: 'Increase font size',
               ),
               IconButton(
-                onPressed: () => debugPrint('Decrease font size'),
+                onPressed: decreaseFontSize,
                 icon: const Icon(
                   Icons.remove,
                   color: Colors.black,
