@@ -105,7 +105,7 @@ class _EditImageScreenState extends EditImageViewModel {
                 tooltip: 'Save Image',
               ),
               IconButton(
-                onPressed: () => debugPrint('Increase font size'),
+                onPressed: increaseFontSize,
                 icon: const Icon(
                   Icons.add,
                   color: Colors.black,
