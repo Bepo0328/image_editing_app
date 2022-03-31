@@ -153,7 +153,7 @@ class _EditImageScreenState extends EditImageViewModel {
                 tooltip: 'Bold',
               ),
               IconButton(
-                onPressed: () => debugPrint('Italic'),
+                onPressed: italicText,
                 icon: const Icon(
                   Icons.format_italic,
                   color: Colors.black,

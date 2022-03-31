@@ -71,6 +71,16 @@ abstract class EditImageViewModel extends State<EditImageScreen> {
     });
   }
 
+  italicText() {
+    setState(() {
+      if (texts[currentIndex].fontStyle == FontStyle.italic) {
+        texts[currentIndex].fontStyle = FontStyle.normal;
+      } else {
+        texts[currentIndex].fontStyle = FontStyle.italic;
+      }
+    });
+  }
+
   addNewText(BuildContext context) {
     setState(() {
       texts.add(
