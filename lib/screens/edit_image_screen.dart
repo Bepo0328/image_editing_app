@@ -121,7 +121,7 @@ class _EditImageScreenState extends EditImageViewModel {
                 tooltip: 'Decrease font size',
               ),
               IconButton(
-                onPressed: () => debugPrint('Align left'),
+                onPressed: alignLeft,
                 icon: const Icon(
                   Icons.format_align_left,
                   color: Colors.black,
@@ -129,7 +129,7 @@ class _EditImageScreenState extends EditImageViewModel {
                 tooltip: 'Align left',
               ),
               IconButton(
-                onPressed: () => debugPrint('Align Center'),
+                onPressed: alignCenter,
                 icon: const Icon(
                   Icons.format_align_center,
                   color: Colors.black,
@@ -137,7 +137,7 @@ class _EditImageScreenState extends EditImageViewModel {
                 tooltip: 'Align Center',
               ),
               IconButton(
-                onPressed: () => debugPrint('Align Right'),
+                onPressed: alignRight,
                 icon: const Icon(
                   Icons.format_align_right,
                   color: Colors.black,
