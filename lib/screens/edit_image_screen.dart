@@ -161,7 +161,7 @@ class _EditImageScreenState extends EditImageViewModel {
                 tooltip: 'Italic',
               ),
               IconButton(
-                onPressed: () => debugPrint('Add New Line'),
+                onPressed: addLinesToText,
                 icon: const Icon(
                   Icons.space_bar,
                   color: Colors.black,
