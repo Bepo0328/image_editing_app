@@ -145,7 +145,7 @@ class _EditImageScreenState extends EditImageViewModel {
                 tooltip: 'Align Right',
               ),
               IconButton(
-                onPressed: () => debugPrint('Bold'),
+                onPressed: boldText,
                 icon: const Icon(
                   Icons.format_bold,
                   color: Colors.black,

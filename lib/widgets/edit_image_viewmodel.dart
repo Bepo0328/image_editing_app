@@ -61,6 +61,16 @@ abstract class EditImageViewModel extends State<EditImageScreen> {
     });
   }
 
+  boldText() {
+    setState(() {
+      if (texts[currentIndex].fontWeight == FontWeight.bold) {
+        texts[currentIndex].fontWeight = FontWeight.normal;
+      } else {
+        texts[currentIndex].fontWeight = FontWeight.bold;
+      }
+    });
+  }
+
   addNewText(BuildContext context) {
     setState(() {
       texts.add(
