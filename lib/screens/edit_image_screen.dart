@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_editing_app/widgets/widgets.dart';
+import 'package:screenshot/screenshot.dart';
 
 class EditImageScreen extends StatefulWidget {
   const EditImageScreen({
@@ -20,54 +21,57 @@ class _EditImageScreenState extends EditImageViewModel {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: _appBar,
-      body: SafeArea(
-        child: SizedBox(
-          height: size.height * 0.6,
-          child: Stack(
-            children: [
-              _selectedImage,
-              for (int i = 0; i < texts.length; i++)
-                Positioned(
-                  left: texts[i].left,
-                  top: texts[i].top,
-                  child: GestureDetector(
-                    onLongPress: () {
-                      setState(() {
-                        currentIndex = i;
-                        removeText(context);
-                      });
-                    },
-                    onTap: () => setCurrentIndex(context, i),
-                    child: Draggable(
-                      feedback: ImageText(textInfo: texts[i]),
-                      child: ImageText(textInfo: texts[i]),
-                      onDragEnd: (drag) {
-                        final renderBox =
-                            context.findRenderObject() as RenderBox;
-                        Offset off = renderBox.globalToLocal(drag.offset);
+      body: Screenshot(
+        controller: screenshotController,
+        child: SafeArea(
+          child: SizedBox(
+            height: size.height * 0.6,
+            child: Stack(
+              children: [
+                _selectedImage,
+                for (int i = 0; i < texts.length; i++)
+                  Positioned(
+                    left: texts[i].left,
+                    top: texts[i].top,
+                    child: GestureDetector(
+                      onLongPress: () {
                         setState(() {
-                          texts[i].top = off.dy - 120;
-                          texts[i].left = off.dx;
+                          currentIndex = i;
+                          removeText(context);
                         });
                       },
+                      onTap: () => setCurrentIndex(context, i),
+                      child: Draggable(
+                        feedback: ImageText(textInfo: texts[i]),
+                        child: ImageText(textInfo: texts[i]),
+                        onDragEnd: (drag) {
+                          final renderBox =
+                              context.findRenderObject() as RenderBox;
+                          Offset off = renderBox.globalToLocal(drag.offset);
+                          setState(() {
+                            texts[i].top = off.dy - 120;
+                            texts[i].left = off.dx;
+                          });
+                        },
+                      ),
                     ),
                   ),
-                ),
-              creatorText.text.isNotEmpty
-                  ? Positioned(
-                      left: 0,
-                      bottom: 0,
-                      child: Text(
-                        creatorText.text,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black.withOpacity(0.3),
+                creatorText.text.isNotEmpty
+                    ? Positioned(
+                        left: 0,
+                        bottom: 0,
+                        child: Text(
+                          creatorText.text,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black.withOpacity(0.3),
+                          ),
                         ),
-                      ),
-                    )
-                  : const SizedBox.shrink(),
-            ],
+                      )
+                    : const SizedBox.shrink(),
+              ],
+            ),
           ),
         ),
       ),
@@ -102,7 +106,7 @@ class _EditImageScreenState extends EditImageViewModel {
             scrollDirection: Axis.horizontal,
             children: [
               IconButton(
-                onPressed: () => debugPrint('Save Button'),
+                onPressed: () => saveToGallery(context),
                 icon: const Icon(
                   Icons.save,
                   color: Colors.black,
